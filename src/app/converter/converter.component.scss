@@ -1,0 +1,17 @@
+.converter {
+  height: 330px;
+  width: 500px;
+  border: 1px solid #d7d6d6;
+  margin: 0 auto;
+  border-radius: 7px;
+
+  &_body {
+    padding: 0 20px;
+
+    h1 {
+      text-align: center;
+    }
+
+  }
+}
+

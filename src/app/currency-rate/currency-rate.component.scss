@@ -1,0 +1,53 @@
+.currency {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+
+  li {
+    list-style-type: none;
+  }
+
+  &-rete {
+    border: 1px solid #d7d6d6;
+    height: 120px;
+    width: 160px;
+    border-radius: 5px;
+
+    &_body {
+
+      &_content {
+        padding: 0 15px;
+        font-size: 20px;
+
+        p {
+          text-align: center;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  &-set {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+
+    &_label {
+      display: block;
+      font-size: 20px;
+    }
+
+    &_select {
+      width: 150px;
+      height: 30px;
+    }
+
+    &_input {
+      margin-top: 10px;
+      width: 143px;
+      height: 30px;
+    }
+  }
+}

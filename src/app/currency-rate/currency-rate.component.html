@@ -1,0 +1,33 @@
+<ul class="currency">
+  <li *ngFor="let i of data.dataCurrencies">
+    <div class="currency-rete">
+      <div class="currency-rate_body">
+        <div class="currency-rete_body_content">
+          <p>{{i.cc}}</p>
+          <p>{{i.rate.toFixed(2)}}</p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div class="currency-set">
+  <div>
+    <label class="currency-set_label">Sale</label>
+    <select class="currency-set_select" [(ngModel)]="selectedSale" (change)="changeSelect($event.target)">
+      <option value="UAH">UAH</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+    <input type="number" class="currency-set_input" placeholder="0.00" [(ngModel)]="resultSale" (input)="onSaleChange($event.target)">
+  </div>
+  <div>
+    <label class="currency-set_label">Buy</label>
+    <select class="currency-set_select" [(ngModel)]="selectedBye" (change)="changeSelect($event.target)">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="UAH">UAH</option>
+    </select>
+    <input type="number" class="currency-set_input" placeholder="0.00" [(ngModel)]="resultBye" (input)="onByeChange($event.target)">
+  </div>
+</div>
