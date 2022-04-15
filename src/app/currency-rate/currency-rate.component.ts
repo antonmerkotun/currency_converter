@@ -26,7 +26,7 @@ export class CurrencyRateComponent implements OnInit {
   }
 
   inputValue(searchValue: any) {
-    let inputValue:number
+    let inputValue: number
     if (typeof searchValue !== "number") {
       inputValue = searchValue.value
     } else {
@@ -43,35 +43,39 @@ export class CurrencyRateComponent implements OnInit {
     return inputValue
   }
 
+  setRate(select: any) {
+    return this.objCurrencies[select].rate
+  }
+
   onSaleChange(searchValue: any): void {
-    let inputValue:number = this.inputValue(searchValue)
+    let inputValue: number = this.inputValue(searchValue)
     if (this.selectedSale === this.selectedBye) {
       this.resultBye = inputValue
     } else {
       if (this.selectedSale === 'UAH') {
-        this.resultBye = (inputValue / this.objCurrencies[this.selectedBye].rate).toFixed(2)
+        this.resultBye = (inputValue / this.setRate(this.selectedBye)).toFixed(2)
       } else {
         if (this.selectedBye === "UAH") {
-          this.resultBye = (inputValue * this.objCurrencies[this.selectedSale].rate).toFixed(2)
+          this.resultBye = (inputValue * this.setRate(this.selectedSale)).toFixed(2)
         } else {
-          this.resultBye = ((inputValue * this.objCurrencies[this.selectedSale].rate) / this.objCurrencies[this.selectedBye].rate).toFixed(2)
+          this.resultBye = ((inputValue * this.setRate(this.selectedSale)) / this.setRate(this.selectedBye)).toFixed(2)
         }
       }
     }
   }
 
   onByeChange(searchValue: any): void {
-    let inputValue:number = this.inputValue(searchValue)
+    let inputValue: number = this.inputValue(searchValue)
     if (this.selectedSale === this.selectedBye) {
       this.resultSale = inputValue
     } else {
       if (this.selectedBye === 'UAH') {
-        this.resultSale = (inputValue / this.objCurrencies[this.selectedSale].rate).toFixed(2)
+        this.resultSale = (inputValue / this.setRate(this.selectedSale)).toFixed(2)
       } else {
         if (this.selectedSale === 'UAH') {
-          this.resultSale = (inputValue * this.objCurrencies[this.selectedBye].rate).toFixed(2)
+          this.resultSale = (inputValue * this.setRate(this.selectedBye)).toFixed(2)
         } else {
-          this.resultSale = ((inputValue * this.objCurrencies[this.selectedBye].rate) / this.objCurrencies[this.selectedSale].rate).toFixed(2)
+          this.resultSale = ((inputValue * this.setRate(this.selectedBye)) / this.setRate(this.selectedSale)).toFixed(2)
         }
       }
     }
