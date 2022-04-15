@@ -10,8 +10,8 @@ import {DataService} from "../shared/data.service";
 export class CurrencyRateComponent implements OnInit {
   resultSale: any = ''
   resultBye: any = ''
-  selectedSale:string = 'UAH'
-  selectedBye:string = 'USD'
+  selectedSale: string = 'UAH'
+  selectedBye: string = 'USD'
   objCurrencies: any = {}
 
   constructor(public data: DataService) {
@@ -25,8 +25,8 @@ export class CurrencyRateComponent implements OnInit {
     this.onSaleChange(+this.resultSale)
   }
 
-  onSaleChange(searchValue: any): void {
-    let inputValue
+  inputValue(searchValue: any) {
+    let inputValue:number
     if (typeof searchValue !== "number") {
       inputValue = searchValue.value
     } else {
@@ -40,6 +40,11 @@ export class CurrencyRateComponent implements OnInit {
         this.objCurrencies.EUR = el
       }
     })
+    return inputValue
+  }
+
+  onSaleChange(searchValue: any): void {
+    let inputValue:number = this.inputValue(searchValue)
     if (this.selectedSale === this.selectedBye) {
       this.resultBye = inputValue
     } else {
@@ -56,22 +61,8 @@ export class CurrencyRateComponent implements OnInit {
   }
 
   onByeChange(searchValue: any): void {
-    let inputValue
-    if (typeof searchValue !== "number") {
-      inputValue = searchValue.value
-    } else {
-      inputValue = searchValue
-    }
-    console.log(inputValue)
-    this.data.dataCurrencies.forEach((el: any) => {
-      if (el.cc === 'USD') {
-        this.objCurrencies.USD = el
-      }
-      if (el.cc === 'EUR') {
-        this.objCurrencies.EUR = el
-      }
-    })
-    if (this.selectedBye === this.selectedSale) {
+    let inputValue:number = this.inputValue(searchValue)
+    if (this.selectedSale === this.selectedBye) {
       this.resultSale = inputValue
     } else {
       if (this.selectedBye === 'UAH') {
